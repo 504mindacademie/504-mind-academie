@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>504 Mind Académie — Télécharger l'application</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  :root { --or:#FFC928; --bleu1:#214E9E; --bleu2:#153470; --blanc:#fff; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; color: var(--blanc);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--bleu1), var(--bleu2)) fixed;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  main { width: 100%; max-width: 560px; padding: 28px 20px 40px; }
+  .logo { display: block; width: 78%; max-width: 360px; margin: 8px auto 6px; }
+  .devise { text-align: center; color: var(--or); font-weight: 800; font-size: 12.5px; letter-spacing: .6px; margin: 4px 0 26px; }
+  h1 { font-size: 24px; line-height: 1.2; text-align: center; margin: 0 0 8px; }
+  .sous { text-align: center; color: #D5E2FA; margin: 0 0 22px; line-height: 1.5; }
+  .btn {
+    display: block; text-align: center; text-decoration: none; color: #0b1f4d;
+    background: var(--or); font-weight: 900; font-size: 18px; letter-spacing: .3px;
+    padding: 17px 18px; border-radius: 16px; box-shadow: 0 8px 22px rgba(0,0,0,.28);
+  }
+  .btn:active { transform: translateY(1px); }
+  .info { text-align: center; color: #BBD0F5; font-size: 13px; margin: 10px 0 0; min-height: 18px; }
+  .carte { background: rgba(8,20,60,.45); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 18px 18px 6px; margin-top: 26px; }
+  .carte h2 { margin: 0 0 12px; font-size: 14px; letter-spacing: .6px; color: var(--or); }
+  ol { margin: 0; padding: 0; list-style: none; counter-reset: etape; }
+  li { counter-increment: etape; position: relative; padding: 0 0 16px 44px; line-height: 1.5; color: #E8F0FF; }
+  li::before {
+    content: counter(etape); position: absolute; left: 0; top: -1px; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--or); color: #0b1f4d; font-weight: 900; display: flex; align-items: center; justify-content: center;
+  }
+  .note { font-size: 13px; color: #BBD0F5; line-height: 1.5; margin: 0 0 14px; }
+  .liens { display: flex; gap: 10px; margin-top: 18px; }
+  .liens a { flex: 1; text-align: center; text-decoration: none; color: #fff; border: 1px solid rgba(255,255,255,.35); border-radius: 14px; padding: 12px 8px; font-weight: 700; font-size: 14px; }
+  footer { text-align: center; color: #9FB8E8; font-size: 12px; margin-top: 26px; line-height: 1.5; }
+  .cache { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="logo.png" alt="504 Mind Académie">
+  <p class="devise">L’ÉCOSYSTÈME DES TRADERS RENTABLES ET RICHES</p>
+
+  <h1>Télécharge l’application</h1>
+  <p class="sous">Constance • Régularité • Exécution.<br>Pour téléphones Android.</p>
+
+  <a id="telecharger" class="btn" href="#">TÉLÉCHARGER L’APPLICATION</a>
+  <p id="version" class="info"></p>
+
+  <section class="carte">
+    <h2>COMMENT L’INSTALLER</h2>
+    <ol>
+      <li>Appuie sur <b>Télécharger l’application</b>. Si ton navigateur signale que le fichier peut être dangereux, choisis <b>Télécharger quand même</b>.</li>
+      <li>Ouvre le fichier téléchargé. Android te demande d’<b>autoriser l’installation depuis cette source</b> : appuie sur <b>Paramètres</b>, active l’option, puis reviens en arrière.</li>
+      <li>Appuie sur <b>Installer</b>. Si Play Protect propose d’analyser l’application, accepte ou choisis <b>Installer quand même</b>.</li>
+      <li>Ouvre <b>504 Mind Académie</b> et <b>connecte-toi avec ton compte Google</b>.</li>
+    </ol>
+    <p class="note">Cette application est distribuée directement par 504 Mind Académie, en dehors du Play Store : Android affiche donc ces messages standard. Télécharge-la uniquement depuis cette page officielle.</p>
+  </section>
+
+  <div class="liens">
+    <a id="lien-whatsapp" class="cache" href="#">WhatsApp</a>
+    <a id="lien-telegram" class="cache" href="#">Telegram</a>
+  </div>
+
+  <footer>© 504 Mind Académie<br>Le trading comporte des risques de perte. Aucun résultat financier n’est garanti.</footer>
+</main>
+
+<script>
+  // ====== À MODIFIER ======
+  const GITHUB_REPO = "504mindacademie/504-mind-academie";
+  const APK_NAME    = "504-mind-academie.apk";
+  const WHATSAPP    = "22662995438";   // numéro avec indicatif, sans + ni espaces (ex. 22670000000). Laisser vide pour masquer.
+  const TELEGRAM    = "";   // lien du canal (ex. https://t.me/...). Laisser vide pour masquer.
+  // ========================
+
+  const lienApk = "https://github.com/" + GITHUB_REPO + "/releases/latest/download/" + APK_NAME;
+  document.getElementById("telecharger").href = lienApk;
+
+  if (WHATSAPP) {
+    const a = document.getElementById("lien-whatsapp");
+    a.href = "https://wa.me/" + WHATSAPP; a.classList.remove("cache");
+  }
+  if (TELEGRAM) {
+    const a = document.getElementById("lien-telegram");
+    a.href = TELEGRAM; a.classList.remove("cache");
+  }
+
+  // Affiche la version et la taille de la dernière publication
+  fetch("https://api.github.com/repos/" + GITHUB_REPO + "/releases/latest")
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(rel => {
+      const fichier = (rel.assets || []).find(x => x.name === APK_NAME);
+      const date = rel.published_at ? new Date(rel.published_at).toLocaleDateString("fr-FR") : "";
+      const taille = fichier ? " • " + (fichier.size / 1048576).toFixed(0) + " Mo" : "";
+      document.getElementById("version").textContent =
+        "Version " + (rel.name || rel.tag_name) + (date ? " • " + date : "") + taille;
+    })
+    .catch(() => {});
+</script>
+</body>
+</html>
